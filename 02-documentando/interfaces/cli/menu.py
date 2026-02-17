@@ -1,53 +1,65 @@
 class MenuCLI:
-    def __init__(self, crear_edificio_uc, agregar_habitacion_uc, edificio_repo):
-        self.crear_edificio_uc = crear_edificio_uc
+    def __init__(self, agregar_habitacion_uc, agregar_sensor_uc, agregar_actuador_uc, repo):
         self.agregar_habitacion_uc = agregar_habitacion_uc
-        self.edificio_repo = edificio_repo
-
+        self.agregar_sensor_uc = agregar_sensor_uc
+        self.agregar_actuador_uc = agregar_actuador_uc
+        self.repo = repo  # solo lectura, NO reglas
 
     def mostrar(self):
         while True:
-            print("\n--- MENÚ CASA INTELIGENTE ---")
-            print("1. Crear edificio")
-            print("2. Agregar habitación")
-            print("3. Listar habitaciones")
+            print("--- MENÚ CASA INTELIGENTE ---")
+            print("1. Agregar habitación")
+            print("2. Agregar sensor")
+            print("3. Agregar actuador")
+            print("4. Listar habitaciones")
+            print("5. Listar dispositivos de habitación")
             print("0. Salir")
 
-
-            opcion = input("Selecciona una opción: ")
-
+            opcion = input("Opción: ")
 
             if opcion == "1":
-                nombre = input("Nombre del edificio: ")
-                edificio = self.crear_edificio_uc.ejecutar(nombre)
-                print(f"Edificio '{edificio.nombre}' creado.")
-
-
-            elif opcion == "2":
                 nombre = input("Nombre de la habitación: ")
                 try:
-                    habitacion = self.agregar_habitacion_uc.ejecutar(nombre)
-                    print(f"Habitación '{habitacion.nombre}' agregada.")
+                    hab = self.agregar_habitacion_uc.ejecutar(nombre)
+                    print(f"Habitación '{hab.nombre}' agregada.")
                 except Exception as e:
-                    print(f"Error: {e}")
+                    print("Error:", e)
 
+            elif opcion == "2":
+                hab = input("Habitación: ")
+                nombre = input("Nombre del sensor: ")
+                try:
+                    s = self.agregar_sensor_uc.ejecutar(hab, nombre)
+                    print(f"Sensor '{s.nombre}' agregado.")
+                except Exception as e:
+                    print("Error:", e)
 
             elif opcion == "3":
-                edificio = self.edificio_repo.obtener()
-                if edificio is None:
-                    print("Aún no hay un edificio creado.")
-                else:
-                    habitaciones = edificio.listar_habitaciones()
-                    if not habitaciones:
-                        print("El edificio no tiene habitaciones.")
-                    else:
-                        print("Habitaciones:")
-                        for h in habitaciones:
-                            print(f"- {h.nombre}")
+                hab = input("Habitación: ")
+                nombre = input("Nombre del actuador: ")
+                try:
+                    a = self.agregar_actuador_uc.ejecutar(hab, nombre)
+                    print(f"Actuador '{a.nombre}' agregado.")
+                except Exception as e:
+                    print("Error:", e)
 
+            elif opcion == "4":
+                for h in self.repo.listar_habitaciones():
+                    print(f"- {h.nombre}")
+
+            elif opcion == "5":
+                hab = input("Habitación: ")
+                h = self.repo.buscar_habitacion(hab)
+                if not h:
+                    print("Habitación no encontrada.")
+                else:
+                    dispositivos = self.repo.listar_dispositivos(h)
+                    if not dispositivos:
+                        print("No hay dispositivos.")
+                    for d in dispositivos:
+                        print(f"- {d}")
 
             elif opcion == "0":
                 print("Saliendo...")
-                break
-            else:
-                print("Opción no válida.")
+                return  # Cerrar correctamente el menú y volver a main()
+                print("Saliendo...")
