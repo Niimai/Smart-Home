@@ -61,5 +61,4 @@ class MenuCLI:
 
             elif opcion == "0":
                 print("Saliendo...")
-                return  # Cerrar correctamente el menú y volver a main()
-                print("Saliendo...")
+                return  
