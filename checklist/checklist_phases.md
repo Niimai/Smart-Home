@@ -59,8 +59,8 @@ python -m expendedora.presentation.menu
 - [ ] `docs/README.md
 - [x] `docs/DESCRIPCION_Y_ALCANCE.md`
 - [x] `docs/EJECUCION.md`
-- [ ] `docs/ARQUITECTURA_POR_CAPAS.md`
-- [ ] `docs/CASOS_DE_USO.md`
+- [x] `docs/ARQUITECTURA_POR_CAPAS.md`
+- [x] `docs/CASOS_DE_USO.md`
 - [ ] `docs/REGLAS_DE_NEGOCIO.md`
 - [ ] `docs/MODELO_DE_DOMINIO.md`
 - [ ] `docs/CONTRATO_REPOSITORIO.md`
