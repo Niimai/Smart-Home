@@ -57,8 +57,8 @@ python -m expendedora.presentation.menu
 - [ ] README.md
 - [ ] CHANGELOG.md
 - [ ] `docs/README.md
-- [ ] `docs/DESCRIPCION_Y_ALCANCE.md`
-- [ ] `docs/EJECUCION.md`
+- [x] `docs/DESCRIPCION_Y_ALCANCE.md`
+- [x] `docs/EJECUCION.md`
 - [ ] `docs/ARQUITECTURA_POR_CAPAS.md`
 - [ ] `docs/CASOS_DE_USO.md`
 - [ ] `docs/REGLAS_DE_NEGOCIO.md`
