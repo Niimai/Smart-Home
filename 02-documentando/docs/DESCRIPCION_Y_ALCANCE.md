@@ -1,6 +1,6 @@
 # Proyecto Casa Inteligente
 
-### Título del proyecto
+### Smart-Home
 
 **Sistema de Gestión de una Casa Inteligente: Simulación de Sensores y Actuadores en un Entorno Domótico**
 

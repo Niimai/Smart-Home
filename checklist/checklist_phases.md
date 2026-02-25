@@ -52,7 +52,7 @@ python -m expendedora.presentation.menu
 - [ ] Añadir docstring a los módulos, clases y métodos públicos del proyecto siguiendo los [criterios de los apuntes](https://ichigar.codeberg.page/pd4/ut1/recursos/poo_ut1_6_documentacion/#eligiendo-nombres).
 - [ ] Comentar las reglas de negocio de las clases del dominio.
 - [ ] Comentar los bloques de código que no expresen claramente para qué se usan.
-- [ ] Eliminar comentarios evidentes.
+- [x] Eliminar comentarios evidentes.
 #### Usando como referencia los [documentos del proyecto model](https://codeberg.org/ichigar/cepy_pd4/src/branch/main/proyecto/02-documentando/expendedora) añadir los siguientes ficheros:
 - [ ] README.md
 - [ ] CHANGELOG.md
