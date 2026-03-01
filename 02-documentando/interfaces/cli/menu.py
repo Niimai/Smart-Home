@@ -1,9 +1,17 @@
 class MenuCLI:
-    def __init__(self, agregar_habitacion_uc, agregar_sensor_uc, agregar_actuador_uc, repo):
+    def __init__(
+        self,
+        agregar_habitacion_uc,
+        agregar_sensor_uc,
+        agregar_actuador_uc,
+        listar_habitaciones_uc,
+        listar_dispositivos_uc
+    ):
         self.agregar_habitacion_uc = agregar_habitacion_uc
         self.agregar_sensor_uc = agregar_sensor_uc
         self.agregar_actuador_uc = agregar_actuador_uc
-        self.repo = repo
+        self.listar_habitaciones_uc = listar_habitaciones_uc
+        self.listar_dispositivos_uc = listar_dispositivos_uc
 
     def mostrar(self):
         while True:
@@ -44,23 +52,24 @@ class MenuCLI:
                     print("Error:", e)
 
             elif opcion == "4":
-                for h in self.repo.listar_habitaciones():
-                    print(f"- {h.nombre}")
+                habitaciones = self.listar_habitaciones_uc.ejecutar()
+                if not habitaciones:
+                    print("No hay habitaciones.")
+                else:
+                    for h in habitaciones:
+                        print(f"- {h.nombre}")
 
             elif opcion == "5":
                 hab = input("Habitación: ")
-                habitaciones = self.repo.listar_habitaciones()
-                edificio = self.repo.obtener_edificio()
-
-                h = edificio.buscar_habitacion(hab, habitaciones)
-                if not h:
-                    print("Habitación no encontrada.")
-                else:
-                    dispositivos = self.repo.listar_dispositivos(h)
+                try:
+                    dispositivos = self.listar_dispositivos_uc.ejecutar(hab)
                     if not dispositivos:
                         print("No hay dispositivos.")
-                    for d in dispositivos:
-                        print(f"- {d}")
+                    else:
+                        for d in dispositivos:
+                            print(f"- {d}")
+                except Exception as e:
+                    print("Error:", e)
 
             elif opcion == "0":
                 print("Saliendo...")
