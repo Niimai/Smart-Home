@@ -14,9 +14,6 @@ class EdificioRepository:
     def listar_habitaciones(self):
         raise NotImplementedError
 
-    def buscar_habitacion(self, nombre):
-        raise NotImplementedError
-
     # Dispositivos
     def agregar_dispositivo(self, habitacion, dispositivo):
         raise NotImplementedError

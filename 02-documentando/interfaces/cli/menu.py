@@ -3,25 +3,25 @@ class MenuCLI:
         self.agregar_habitacion_uc = agregar_habitacion_uc
         self.agregar_sensor_uc = agregar_sensor_uc
         self.agregar_actuador_uc = agregar_actuador_uc
-        self.repo = repo  # solo lectura, NO reglas
+        self.repo = repo
 
     def mostrar(self):
         while True:
-            print("--- MENÚ CASA INTELIGENTE ---")
+            print("\n--- MENÚ CASA INTELIGENTE ---")
             print("1. Agregar habitación")
             print("2. Agregar sensor")
             print("3. Agregar actuador")
             print("4. Listar habitaciones")
-            print("5. Listar dispositivos de habitación")
+            print("5. Listar dispositivos de una habitación")
             print("0. Salir")
 
             opcion = input("Opción: ")
 
             if opcion == "1":
-                nombre = input("Nombre de la habitación: ")
+                nombre = input("Nombre habitación: ")
                 try:
-                    hab = self.agregar_habitacion_uc.ejecutar(nombre)
-                    print(f"Habitación '{hab.nombre}' agregada.")
+                    h = self.agregar_habitacion_uc.ejecutar(nombre)
+                    print(f"Habitación '{h.nombre}' agregada.")
                 except Exception as e:
                     print("Error:", e)
 
@@ -49,7 +49,10 @@ class MenuCLI:
 
             elif opcion == "5":
                 hab = input("Habitación: ")
-                h = self.repo.buscar_habitacion(hab)
+                habitaciones = self.repo.listar_habitaciones()
+                edificio = self.repo.obtener_edificio()
+
+                h = edificio.buscar_habitacion(hab, habitaciones)
                 if not h:
                     print("Habitación no encontrada.")
                 else:
@@ -61,4 +64,7 @@ class MenuCLI:
 
             elif opcion == "0":
                 print("Saliendo...")
-                return  
+                return
+
+            else:
+                print("Opción inválida")

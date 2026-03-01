@@ -5,13 +5,15 @@ class AgregarSensorUseCase:
         self.repo = repo
 
     def ejecutar(self, nombre_habitacion, nombre_sensor):
-        hab = self.repo.buscar_habitacion(nombre_habitacion)
+        edificio = self.repo.obtener_edificio()
+        habitaciones = self.repo.listar_habitaciones()
+
+        hab = edificio.buscar_habitacion(nombre_habitacion, habitaciones)
         if not hab:
             raise ValueError("La habitación no existe.")
 
-        sensores = [d.nombre for d in self.repo.listar_dispositivos(hab)]
-        edificio = self.repo.obtener_edificio()
-        edificio.validar_nombre_unico(nombre_sensor, sensores)
+        dispositivos = [d.nombre for d in self.repo.listar_dispositivos(hab)]
+        edificio.validar_nombre_unico(nombre_sensor, dispositivos)
 
         sensor = Sensor(nombre_sensor)
         self.repo.agregar_dispositivo(hab, sensor)

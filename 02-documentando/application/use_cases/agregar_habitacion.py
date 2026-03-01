@@ -6,13 +6,12 @@ class AgregarHabitacionUseCase:
 
     def ejecutar(self, nombre_habitacion):
         edificio = self.repo.obtener_edificio()
-        if not edificio:
-            raise Exception("El edificio no está inicializado.")
+        habitaciones = self.repo.listar_habitaciones()
 
-        # Validación de duplicados en dominio
-        nombres_existentes = [h.nombre for h in self.repo.listar_habitaciones()]
-        edificio.validar_nombre_unico(nombre_habitacion, nombres_existentes)
+        # Validación en dominio
+        nombres = [h.nombre for h in habitaciones]
+        edificio.validar_nombre_unico(nombre_habitacion, nombres)
 
-        habitacion = Habitacion(nombre_habitacion)
-        self.repo.agregar_habitacion(habitacion)
-        return habitacion
+        hab = Habitacion(nombre_habitacion)
+        self.repo.agregar_habitacion(hab)
+        return hab

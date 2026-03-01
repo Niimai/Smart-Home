@@ -4,8 +4,11 @@ class Edificio:
             raise ValueError("El nombre del edificio no puede estar vacío.")
         self.nombre = nombre
 
-    # El repo se encargará de almacenar habitaciones y dispositivos
+    # Validación de duplicados
+    def validar_nombre_unico(self, nombre_nuevo, existentes):
+        if nombre_nuevo in existentes:
+            raise ValueError("El nombre ya existe.")
 
-    def validar_nombre_unico(self, nombre_nuevo, nombres_existentes):
-        if nombre_nuevo in nombres_existentes:
-            raise ValueError("Ya existe un elemento con ese nombre.")
+    # Búsqueda movida al dominio (como pidió el profesor)
+    def buscar_habitacion(self, nombre_habitacion, lista_habitaciones):
+        return next((h for h in lista_habitaciones if h.nombre == nombre_habitacion), None)
