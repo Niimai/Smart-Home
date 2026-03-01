@@ -1,10 +1,38 @@
 from domain.repositories.edificio_repository import EdificioRepository
+from domain.entities.habitacion import Habitacion
+from domain.entities.sensor import Sensor
+from domain.entities.actuador import Actuador
+
 
 class EdificioRepositoryMemory(EdificioRepository):
     def __init__(self):
         self.edificio = None
         self.habitaciones = []  
         self.dispositivos = {}  
+
+        # Carga datos iniciales
+        self._cargar_datos_iniciales()
+
+
+    # Carga inicial
+    
+    def _cargar_datos_iniciales(self):
+        
+        dormitorio = Habitacion("Dormitorio")
+        salon = Habitacion("Salón")
+
+        self.habitaciones.extend([dormitorio, salon])
+
+        self.dispositivos[dormitorio.nombre] = [
+            Sensor("SensorDormitorio"),
+            Actuador("ActuadorDormitorio")
+        ]
+
+        self.dispositivos[salon.nombre] = [
+            Sensor("SensorSalon"),
+            Actuador("ActuadorSalon")
+        ]
+        
 
     # Edificio
     
