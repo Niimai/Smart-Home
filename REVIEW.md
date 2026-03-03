@@ -1,12 +1,11 @@
-﻿# REVISIONES PROYECTO
+# REVISIONES PROYECTO
 
-## REVISIÓN FASE 03 - 2026-03-02 — Nota: 0/10
+## REVISIÓN FASE 03 - 2026-03-03 — Nota: 0/10
 
 > No entregado.
 
----
 
-## REVISIÓN FASE 02 - 2026-03-02 — Nota: 4/10
+## REVISIÓN FASE 02 - 2026-03-03 — Nota: 4/10
 
 > Revisión realizada sobre: `Smart-Home/02-documentando/`
 
@@ -15,33 +14,36 @@
 - Se han añadido `ARQUITECTURA_POR_CAPAS.md`, `CASOS_DE_USO.md` y `EJECUCION.md` a la carpeta `docs/`.
 - `casa_inteligente.md` renombrado correctamente a `DESCRIPCION_Y_ALCANCE.md`.
 
-### Lo que está bien
+### Lo que cumples
 
-- Los documentos nuevos tienen buena extensión y estructura clara.
+- La carpeta `docs/` existe y contiene cuatro documentos con buena extensión y estructura clara: `DESCRIPCION_Y_ALCANCE.md`, `ARQUITECTURA_POR_CAPAS.md`, `CASOS_DE_USO.md` y `EJECUCION.md`.
 - `ARQUITECTURA_POR_CAPAS.md` describe bien las responsabilidades de cada capa y el flujo entre ellas.
-- La descripción general del proyecto en `DESCRIPCION_Y_ALCANCE.md` está bien redactada.
+- `DESCRIPCION_Y_ALCANCE.md` está bien redactado.
 
-### Aspectos a mejorar
+### Lo que no cumples
 
-- [ ] [IMPORTANTE] `CHANGELOG.md` sigue sin existir. Es un fichero obligatorio en la raíz del paquete que registra los cambios por versión. Mira el modelo en `modelo/cepy_pd4/proyecto/02-documentando/expendedora/CHANGELOG.md` para ver el formato esperado.
+- [ ] **[IMPORTANTE] Falta `CHANGELOG.md`** en la raíz de `02-documentando/`. Es un fichero obligatorio para registrar los cambios del proyecto por versión. Consulta el modelo en `modelo/cepy_pd4/proyecto/02-documentando/expendedora/CHANGELOG.md` para ver el formato: encabezado con número de versión, fecha y lista de cambios añadidos, modificados y eliminados.
 
-- [ ] [IMPORTANTE] Faltan en `docs/` los siguientes ficheros obligatorios: `README.md` (índice de la documentación), `REGLAS_DE_NEGOCIO.md`, `MODELO_DE_DOMINIO.md`, `CONTRATO_REPOSITORIO.md`, `DATOS_INICIALES.md`, `TESTS_Y_PASOS.md` y `TROUBLESHOOTING.md`. Consulta el modelo para ver el contenido esperado de cada uno.
+- [ ] **[IMPORTANTE] Faltan 7 ficheros obligatorios en `docs/`**: `README.md` (índice de la documentación), `REGLAS_DE_NEGOCIO.md`, `MODELO_DE_DOMINIO.md`, `CONTRATO_REPOSITORIO.md`, `DATOS_INICIALES.md`, `TESTS_Y_PASOS.md` y `TROUBLESHOOTING.md`. Consulta los equivalentes en `modelo/cepy_pd4/proyecto/02-documentando/expendedora/docs/` para ver el contenido esperado de cada uno.
 
-- [ ] [IMPORTANTE] No hay **docstrings en ningún fichero** del proyecto: ni en módulos, ni en clases, ni en métodos. Todos los ficheros `.py` carecen de ellos. Añade docstring de módulo al inicio de cada fichero (describe qué contiene), docstring de clase (describe qué representa) y docstring en cada método público (describe qué hace, qué recibe y qué devuelve).
+- [ ] **[IMPORTANTE] No hay docstrings en ningún fichero Python del proyecto**: ni en módulos, ni en clases, ni en métodos. Todos los `.py` carecen de ellos. Añade:
+  - Al inicio de cada módulo: una línea describiendo qué contiene (por ejemplo, `"""Módulo que define la entidad Habitacion."""`).
+  - En cada clase: una descripción de qué representa.
+  - En cada método público: qué hace, qué parámetros recibe y qué devuelve.
 
-- [ ] [IMPORTANTE] La documentación describe funcionalidades que **no están implementadas en el código actual**, lo que crea una desalineación entre docs y realidad:
-  - `CASOS_DE_USO.md` lista 11 casos de uso (CU-02 eliminar habitación, CU-05 eliminar dispositivo, CU-07 lecturas de sensores, CU-08 activar/desactivar actuadores, CU-10 estado del edificio, etc.), pero el menú en `interfaces/cli/menu.py` solo tiene **5 opciones funcionales**.
-  - `ARQUITECTURA_POR_CAPAS.md:88-95` describe "lecturas simuladas", "reglas automáticas" y "comportamiento de sensores" que no existen en el código.
-  - `DESCRIPCION_Y_ALCANCE.md` describe "distintos tipos de sensores", "lecturas de sensores", "lógica automática" que tampoco están implementados.
-  - `EJECUCION.md:44` dice que el sistema "cargará una simulación del edificio sin habitaciones iniciales", pero en el código actual `_cargar_datos_iniciales()` crea 2 habitaciones y 4 dispositivos al arrancar. También lista opciones del menú (consultar sensores, activar actuadores, ver estado del edificio) que no existen.
+- [ ] **[IMPORTANTE] La documentación describe funcionalidades que no están implementadas**, lo que crea una desalineación entre docs y código:
+  - `CASOS_DE_USO.md` lista 11 casos de uso, pero el menú (`interfaces/cli/menu.py`) solo tiene **5 opciones funcionales** (agregar habitación, agregar sensor, agregar actuador, listar habitaciones, listar dispositivos). Los casos CU-02, CU-05, CU-07, CU-08, CU-09 y CU-10 no están implementados.
+  - `ARQUITECTURA_POR_CAPAS.md` (sección 4) describe "lecturas simuladas" y "reglas automáticas" que no existen en el código.
+  - `DESCRIPCION_Y_ALCANCE.md` menciona "distintos tipos de sensores" y "lógica automática" que tampoco están implementados.
+  - `EJECUCION.md` dice que el sistema arranca "sin habitaciones iniciales", pero `_cargar_datos_iniciales()` crea 2 habitaciones y 4 dispositivos al arrancar. También lista opciones del menú que no existen.
 
-  La documentación debe reflejar lo que el programa **realmente hace ahora**, no lo que se planea hacer. Ajusta los casos de uso y descripciones para que coincidan con las 5 opciones actuales del menú.
+  **Cómo resolverlo:** la documentación debe reflejar lo que el programa **hace ahora**, no lo que planeas añadir. Ajusta cada documento para que el apartado **incluye** de `DESCRIPCION_Y_ALCANCE.md` coincida con las opciones reales del menú y lo no implementado que aparezca en el apartado **no incluye**. Actualiza si añades funcionalidades al menú. Te puedes guiar del mismo contenido en el proyecto modelo de la máquina expendedora.
 
-- [ ] [SUGERENCIA] `README.md` (`02-documentando/README.md`) está en inglés y no incluye enlace a la carpeta `docs/` ni a `CHANGELOG.md`. Añade un apartado de documentación con los enlaces.
+- [ ] **[SUGERENCIA] `README.md` sin completar**. Usa como referencia para el mismo contenido en el proyecto modelo de la máquina expendedora
+- [ ] **[SUGERENCIA] Las reglas de negocio del dominio no tienen comentarios.** Por ejemplo, en `domain/entities/edificio.py:3` añade `# El nombre no puede estar vacío ni contener solo espacios` y en `domain/entities/actuador.py:6` explica que `estado = False` significa "apagado por defecto". El lector no debería tener que deducirlo.
 
-- [ ] [SUGERENCIA] Las reglas de negocio del dominio no tienen comentarios. Por ejemplo, en `domain/entities/edificio.py:3-4` valdría añadir `# El nombre del edificio no puede estar vacío ni contener solo espacios` y en `domain/entities/actuador.py:6` explicar que `estado = False` significa "apagado por defecto". El lector no debería tener que deducirlo.
 
-## REVISIÓN FASE 01 - 2026-03-02 — Nota: 7/10
+## REVISIÓN FASE 01 - 2026-03-03 — Nota: 6/10
 
 > Revisión realizada sobre: `Smart-Home/02-documentando/`
 
@@ -54,26 +56,41 @@
 - Casos de uso separados por tipo de dispositivo: `AgregarSensorUseCase` y `AgregarActuadorUseCase`.
 - Persistencia correcta: los use cases llaman a `repo.agregar_habitacion()` y `repo.agregar_dispositivo()`.
 
-### Lo que está bien
+### Lo que cumples
 
-- La estructura de capas está bien definida y respetada.
-- Herencia aplicada correctamente: `Sensor` y `Actuador` heredan de `Dispositivo`.
-- El contrato de repositorio (`EdificioRepository`) con métodos abstractos está bien planteado.
-- La validación de nombre vacío está en el dominio (`Dispositivo.__init__`, `Edificio.__init__`, `Habitacion.__init__`).
+- Repositorio creado y compartido con el profesor.
+- `README.md` presente con instrucciones para ejecutar el proyecto.
+- El proyecto está organizado en capas bien diferenciadas: `domain/`, `application/`, `infrastructure/` e `interfaces/` (equivalente a `presentation/`).
+- La estructura de ficheros sigue las pautas de módulos, paquetes y subpaquetes Python (todos los directorios tienen `__init__.py`).
+- POO aplicado correctamente: `Sensor` y `Actuador` heredan de `Dispositivo`.
+- El contrato de repositorio (`domain/repositories/edificio_repository.py`) define métodos abstractos con `raise NotImplementedError`.
+- Validación de nombre vacío en el dominio: `Dispositivo.__init__`, `Edificio.__init__`, `Habitacion.__init__`.
+- La búsqueda de habitación está delegada al dominio (`Edificio.buscar_habitacion`).
+- El menú no accede directamente al repositorio.
+- Los 5 apartados del menú funcionan correctamente.
+- Datos precargados en `infrastructure/repositories/edificio_repository_memory.py` mediante `_cargar_datos_iniciales()`: el programa arranca con 2 habitaciones y 4 dispositivos.
+- Nombres de ficheros, clases y variables significativos y conformes a PEP8.
 
-### Aspectos a mejorar
+### Lo que no cumples
 
-- [ ] [IMPORTANTE] Los atributos `nombre` de las entidades son públicos (`self.nombre = nombre`) sin usar `@property`. Esto significa que desde fuera se puede hacer `habitacion.nombre = ""` sin que se valide nada. Aplica el patrón de getter/setter con `@property` para el atributo `nombre` en al menos `Edificio` y `Habitacion`, de forma que la validación del `__init__` también proteja las modificaciones posteriores.
+- [ ] **[IMPORTANTE] El menú no tiene opciones para la operativa básica de los dispositivos.** La clase `Actuador` (`domain/entities/actuador.py`) incluye `activar()` y `desactivar()`, pero ninguna opción del menú permite ejecutarlos. El usuario no puede interactuar con los actuadores más allá de crearlos: no puede encenderlos, apagarlos ni consultar su estado. De igual forma, `Sensor` existe como clase pero no hay ninguna opción para leer un sensor. 
+- *Cómo resolverlo:* Añade al menú al menos una opción para activar/desactivar un actuador y otra para consultar el estado de los dispositivos de una habitación.
 
-- [ ] [SUGERENCIA] El menú (`interfaces/cli/menu.py:2-14`) recibe **5 casos de uso como parámetros separados**. Como ya se indicó en la revisión anterior, considera crear un `ServicioSmartHome` en `application/` que agrupe todos los casos de uso y sea el único objeto que el menú necesite. Así el menú solo tendría una dependencia en lugar de cinco, y añadir nuevas funcionalidades no requeriría cambiar la firma del constructor del menú.
+- [ ] **[SUGERENCIA] `obtener_edificio()` puede devolver `None`** si se llama antes de que `guardar_edificio()` haya sido invocado. Todos los use cases asumen que el resultado nunca es `None` y llaman directamente `edificio.validar_nombre_unico(...)` sin comprobarlo, lo que causaría un `AttributeError`. 
+  - *Cómo resolverlo*: lanza un error claro si el edificio no ha sido inicializado o de momento no implementes esta clase.
 
-- [ ] [SUGERENCIA] La clase `Sensor` (`domain/entities/sensor.py:3-4`) solo contiene `pass` y no aporta ningún comportamiento propio más allá de heredar de `Dispositivo`. Para que la herencia tenga sentido, `Sensor` debería tener al menos algún método o atributo específico que lo diferencie (por ejemplo, un método `leer()` que devuelva un valor, aunque sea fijo o aleatorio).
+- [ ] **[IMPORTANTE] Los atributos `nombre` de las entidades son públicos** (`self.nombre = nombre`) sin usar `@property`. Esto permite hacer `habitacion.nombre = ""` desde fuera sin que se valide nada. Aplica el patrón getter/setter con `@property` para `nombre` en al menos `Edificio` y `Habitacion`, de forma que la validación del `__init__` también proteja modificaciones posteriores.
 
-# REVISIÓN DEL PROYECTO
+- [ ] **[SUGERENCIA] El menú (`interfaces/cli/menu.py:2-14`) recibe 5 casos de uso como parámetros separados.** Considera crear un `ServicioSmartHome` en `application/` que agrupe todos los casos de uso y sea el único objeto que el menú necesite. Así el menú tendría una sola dependencia y añadir nuevas funcionalidades no requeriría cambiar la firma del constructor.
+
+- [ ] **[SUGERENCIA] La clase `Sensor` (`domain/entities/sensor.py`) no está implementada**
+
+- [ ] **[SUGERENCIA] eliminar o implementar correctamente la clase Edificio**: En el estado actual de la apliación usar la clase edificio no tiene sentido. Solo hay habitaciones con sensores y actuadores. La clase Edificio solo tiene sentido si la aplicación permite tener más de un edificio y gestionarlos y en ese caso cada uno debería contener una lista de aplicaciones con lo que el repo sería de edificios que a su vez contendría una lista de habitaciones como uno de sus atributos. Tener ahora mismo la clase edificio solo para buscar habitaciones que ni siquiera están guardadas en él no tiene sentido.
+
 
 ## REVISIÓN FASE 02 - 2026-02-25
 
-### Incumplimientos detectados 
+### Incumplimientos detectados
 
 - [ ] No existe `CHANGELOG.md`.
 - [ ] En `docs/` faltan `README.md` (de docs), `REGLAS_DE_NEGOCIO.md`, `MODELO_DE_DOMINIO.md`, `CONTRATO_REPOSITORIO.md`, `DATOS_INICIALES.md`, `TESTS_Y_PASOS.md` (y `TROUBLESHOOTING.md` como opcional recomendado).
@@ -89,7 +106,7 @@
 
 ###  Comentarios / recomendaciones
 
-- [ ] **Tener datos precargados** desde `infrastructure` que se usen cada vez que se ejecute el programa que permitan hacer pruebas sin tener que cargar datos cada vez que se ejecuta el menú. Mira en expendedora. 
+- [ ] **Tener datos precargados** desde `infrastructure` que se usen cada vez que se ejecute el programa que permitan hacer pruebas sin tener que cargar datos cada vez que se ejecuta el menú. Mira en expendedora.
   **Comentario**: no se ha implementado y facilita las pruebas.
 - **Añade un servicio de aplicación que haga de fachada de la misma**: en vez de pasar 3 use _cases sueltos al menú, crea un `ServicioSmartHome` en `application` que agrupe operaciones y sea el único objeto que usa la UI. Esto simplifica el menú y reduce acoplamiento (cantidad de dependencias del menú).
 - El diseño que empleas ahora con un `main.py` de entrada que se encarga de llamar al `cli/menu.py` aunque es correcto la idea era usarlo más adelante al ver como empaquetar correctamente las aplicaciones. Si quieres puedes manternerlo, pero no está alineado con lo que hemos visto hasta ahora.
@@ -98,7 +115,7 @@
 
 La aplicación no está siguiendo los principios del diseño por capas visto en clase en algunos aspectos. Deberías arreglar:
 
-- [x] Dado que **solo usas un edificio** no tiene mucho sentido que desde el menú haya una opción para añadir edificio. No debería aparecer la opción en el menú y crearlo al inicializarlo. De hecho cada vez que seleccionas la opción de crear un edificio pierdes el edificio anterior y todo lo que le habías añadido. De esa forma además te ahorras usar el repositorio desde el menú que va contra los principios del diseño por capas: 
+- [x] Dado que **solo usas un edificio** no tiene mucho sentido que desde el menú haya una opción para añadir edificio. No debería aparecer la opción en el menú y crearlo al inicializarlo. De hecho cada vez que seleccionas la opción de crear un edificio pierdes el edificio anterior y todo lo que le habías añadido. De esa forma además te ahorras usar el repositorio desde el menú que va contra los principios del diseño por capas:
 - [ ] En `menu.py` (línea 2) estás pasando `repo` al `MenuCLI` y en las opciones `4` y `5` lees `repo.obtener()` y navegas por `edificio.habitaciones`.
   **Comentario:** el menú sigue leyendo directamente del repo para consultas.
 - [ ] **Mueve la búsqueda de habitación al dominio**: no deberías incluir `next((h for h in edificio.habitaciones...` en casos de uso o en el menú. Añade algo como `Edificio.buscar_habitacion(nombre)` en `edificio.py` y úsalo desde application.
@@ -109,4 +126,3 @@ La aplicación no está siguiendo los principios del diseño por capas visto en 
 - [x] **Evita que application decida strings de tipo**: AgregarDispositivoUseCase decide tipo == "sensor"/"actuador". Crea clases concretas cada una con su método para agregar y que sean invocadas desde el menu y que este llame al servicio/caso de uso correspondiente.
 - [x] **Después de modificar el edificio, guarda en el repositorio**: en `agregar_habitacion.py` (línea 10) y `agregar_dispositivo.py` (línea 11) obtienes el edificio, lo modificas y devuelves, pero no haces `repo.guardar(edificio)`. Ahora funciona porque el repo en memoria guardas en el objeto en una lista, pero deberías hacerlo en el repositorio y tener en el objeto una referencia al repositorio como indico más arriba.
   **Comentario:** Evidencia: en `agregar_habitacion.py` (line 17), `agregar_sensor.py` (line 17) y `agregar_actuador.py` (line 17) se persiste mediante métodos específicos del repositorio (`agregar_habitacion`, `agregar_dispositivo`),
-
