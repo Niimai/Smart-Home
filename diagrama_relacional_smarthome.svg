@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1300 600" width="1300" height="600">
+  <defs>
+    <style>
+      .table-header { fill: #2c3e50; }
+      .pk-row { fill: #fff9e6; stroke: #ddd; stroke-width: 1; }
+      .fk-row { fill: #ffe6e6; stroke: #ddd; stroke-width: 1; }
+      .normal-row { fill: #f8f8f8; stroke: #ddd; stroke-width: 1; }
+      .optional-row { fill: #eaf4ff; stroke: #ddd; stroke-width: 1; }
+      .text-white { fill: white; font-weight: bold; font-size: 14px; }
+      .text-black { fill: black; font-size: 11px; font-family: 'Monaco', monospace; }
+      .rel-line { stroke: #3498db; stroke-width: 2.5; fill: none; }
+      .rel-label { fill: #2c3e50; font-size: 11px; font-weight: bold; }
+      .legend-label { fill: black; font-size: 12px; }
+    </style>
+    <marker id="arrow-end" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#3498db"/>
+    </marker>
+  </defs>
+
+  <text x="650" y="32" font-size="22" font-weight="bold" text-anchor="middle" fill="#2c3e50">
+    Smart-Home - Diagrama Relacional SQLite
+  </text>
+
+  <!-- EDIFICIOS -->
+  <rect x="80" y="100" width="300" height="32" class="table-header"/>
+  <text x="230" y="122" text-anchor="middle" class="text-white">edificios</text>
+  <rect x="80" y="132" width="300" height="28" class="pk-row"/>
+  <text x="90" y="151" class="text-black">* nombre TEXT PRIMARY KEY</text>
+
+  <!-- HABITACIONES -->
+  <rect x="500" y="160" width="320" height="32" class="table-header"/>
+  <text x="660" y="182" text-anchor="middle" class="text-white">habitaciones</text>
+  <rect x="500" y="192" width="320" height="28" class="pk-row"/>
+  <text x="510" y="211" class="text-black">* nombre TEXT (PK)</text>
+  <rect x="500" y="220" width="320" height="28" class="fk-row"/>
+  <text x="510" y="239" class="text-black">* edificio_nombre TEXT (PK, FK -&gt; edificios)</text>
+
+  <!-- DISPOSITIVOS -->
+  <rect x="900" y="280" width="340" height="32" class="table-header"/>
+  <text x="1070" y="302" text-anchor="middle" class="text-white">dispositivos</text>
+  <rect x="900" y="312" width="340" height="28" class="pk-row"/>
+  <text x="910" y="331" class="text-black">* nombre TEXT (PK)</text>
+  <rect x="900" y="340" width="340" height="28" class="fk-row"/>
+  <text x="910" y="359" class="text-black">* habitacion_nombre TEXT (PK, FK)</text>
+  <rect x="900" y="368" width="340" height="28" class="normal-row"/>
+  <text x="910" y="387" class="text-black">tipo TEXT NOT NULL (discriminador)</text>
+  <rect x="900" y="396" width="340" height="28" class="optional-row"/>
+  <text x="910" y="415" class="text-black">estado INTEGER (solo ACTUADOR)</text>
+
+  <!-- RELACIONES -->
+  <path d="M 380 146 Q 440 160 500 200" class="rel-line" marker-end="url(#arrow-end)"/>
+  <text x="440" y="145" text-anchor="middle" class="rel-label">1:N</text>
+  <path d="M 820 220 Q 860 250 900 320" class="rel-line" marker-end="url(#arrow-end)"/>
+  <text x="860" y="235" text-anchor="middle" class="rel-label">1:N</text>
+
+  <!-- LEYENDA -->
+  <rect x="80" y="470" width="1150" height="100" fill="#f0f0f0" stroke="#999" stroke-width="1" rx="5"/>
+  <rect x="100" y="485" width="20" height="20" class="pk-row" stroke="#333" stroke-width="1"/>
+  <text x="130" y="500" class="legend-label">* PK (identifica fila)</text>
+  <rect x="100" y="510" width="20" height="20" class="fk-row" stroke="#333" stroke-width="1"/>
+  <text x="130" y="525" class="legend-label">FK (vincula a otra tabla)</text>
+  <rect x="100" y="535" width="20" height="20" class="optional-row" stroke="#333" stroke-width="1"/>
+  <text x="130" y="550" class="legend-label">Columna opcional (NULL en subtipos que no la usan)</text>
+  <text x="500" y="500" class="legend-label">1:N = Una a muchos (clave foránea directa)</text>
+  <text x="500" y="525" class="legend-label">PK compuesta: (edificio, habitacion) y (habitacion, dispositivo).</text>
+  <text x="500" y="550" class="legend-label">Herencia Sensor/Actuador con discriminador 'tipo'.</text>
+  <text x="900" y="500" class="legend-label">3 tablas:</text>
+  <text x="900" y="525" class="legend-label">edificios, habitaciones, dispositivos.</text>
+</svg>
