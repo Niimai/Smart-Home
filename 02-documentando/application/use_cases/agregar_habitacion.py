@@ -8,9 +8,8 @@ class AgregarHabitacionUseCase:
         edificio = self.repo.obtener_edificio()
         habitaciones = self.repo.listar_habitaciones()
 
-        # Validación en dominio
-        nombres = [h.nombre for h in habitaciones]
-        edificio.validar_nombre_unico(nombre_habitacion, nombres)
+        # ✔ El dominio decide todo
+        edificio.validar_habitacion_no_duplicada(nombre_habitacion, habitaciones)
 
         hab = Habitacion(nombre_habitacion)
         self.repo.agregar_habitacion(hab)

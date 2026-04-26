@@ -4,11 +4,13 @@ class Edificio:
             raise ValueError("El nombre del edificio no puede estar vacío.")
         self.nombre = nombre
 
-    # Validación de duplicados
-    def validar_nombre_unico(self, nombre_nuevo, existentes):
-        if nombre_nuevo in existentes:
-            raise ValueError("El nombre ya existe.")
+    def validar_habitacion_no_duplicada(self, nombre, habitaciones):
+        if any(h.nombre == nombre for h in habitaciones):
+            raise ValueError("La habitación ya existe.")
 
-    # Búsqueda movida al dominio (como pidió el profesor)
-    def buscar_habitacion(self, nombre_habitacion, lista_habitaciones):
-        return next((h for h in lista_habitaciones if h.nombre == nombre_habitacion), None)
+    def validar_dispositivo_no_duplicado(self, nombre, dispositivos):
+        if any(d.nombre == nombre for d in dispositivos):
+            raise ValueError("El dispositivo ya existe.")
+
+    def buscar_habitacion(self, nombre, habitaciones):
+        return next((h for h in habitaciones if h.nombre == nombre), None)
