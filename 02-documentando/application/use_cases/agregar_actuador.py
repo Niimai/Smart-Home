@@ -8,12 +8,15 @@ class AgregarActuadorUseCase:
         edificio = self.repo.obtener_edificio()
         habitaciones = self.repo.listar_habitaciones()
 
+        # ✅ ahora usa el dominio
         hab = edificio.buscar_habitacion(nombre_habitacion, habitaciones)
         if not hab:
             raise ValueError("La habitación no existe.")
 
-        dispositivos = [d.nombre for d in self.repo.listar_dispositivos(hab)]
-        edificio.validar_nombre_unico(nombre_actuador, dispositivos)
+        dispositivos = self.repo.listar_dispositivos(hab)
+
+        # validación en dominio
+        edificio.validar_dispositivo_no_duplicado(nombre_actuador, dispositivos)
 
         actuador = Actuador(nombre_actuador)
         self.repo.agregar_dispositivo(hab, actuador)

@@ -6,6 +6,7 @@ class ListarDispositivosUseCase:
         edificio = self.repo.obtener_edificio()
         habitaciones = self.repo.listar_habitaciones()
 
+        # ✅ también aquí usamos dominio
         hab = edificio.buscar_habitacion(nombre_habitacion, habitaciones)
         if not hab:
             raise ValueError("La habitación no existe.")

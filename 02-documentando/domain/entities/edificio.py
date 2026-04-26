@@ -12,5 +12,9 @@ class Edificio:
         if any(d.nombre == nombre for d in dispositivos):
             raise ValueError("El dispositivo ya existe.")
 
-    def buscar_habitacion(self, nombre, habitaciones):
-        return next((h for h in habitaciones if h.nombre == nombre), None)
+    # ✅ BÚSQUEDA EN EL DOMINIO (LO QUE PIDE EL PROFESOR)
+    def buscar_habitacion(self, nombre_habitacion, habitaciones):
+        for h in habitaciones:
+            if h.nombre == nombre_habitacion:
+                return h
+        return None

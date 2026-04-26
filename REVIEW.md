@@ -118,7 +118,7 @@ La aplicación no está siguiendo los principios del diseño por capas visto en 
 - [x] Dado que **solo usas un edificio** no tiene mucho sentido que desde el menú haya una opción para añadir edificio. No debería aparecer la opción en el menú y crearlo al inicializarlo. De hecho cada vez que seleccionas la opción de crear un edificio pierdes el edificio anterior y todo lo que le habías añadido. De esa forma además te ahorras usar el repositorio desde el menú que va contra los principios del diseño por capas:
 - [x] En `menu.py` (línea 2) estás pasando `repo` al `MenuCLI` y en las opciones `4` y `5` lees `repo.obtener()` y navegas por `edificio.habitaciones`.
   **Comentario:** el menú sigue leyendo directamente del repo para consultas.
-- [ ] **Mueve la búsqueda de habitación al dominio**: no deberías incluir `next((h for h in edificio.habitaciones...` en casos de uso o en el menú. Añade algo como `Edificio.buscar_habitacion(nombre)` en `edificio.py` y úsalo desde application.
+- [x] **Mueve la búsqueda de habitación al dominio**: no deberías incluir `next((h for h in edificio.habitaciones...` en casos de uso o en el menú. Añade algo como `Edificio.buscar_habitacion(nombre)` en `edificio.py` y úsalo desde application.
   **Comentario:** Sin implementar
 - [x] Las habitaciones del edificio y los dispositivos de la habitación se debería almacenar en **repo**, no en listas en el propio objeto..
 - [x]**Añade reglas/validaciones en el dominio**: evita desde el dominio: nombres vacíos, habitaciones duplicadas, tipos inválidos. Actalmente esas validaciones están fuera (o no existen). Ponlas en Edificio/Habitacion y **haz que application solo coordine** y no aplique reglas de negocio.
