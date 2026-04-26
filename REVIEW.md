@@ -73,7 +73,7 @@
 
 ### Lo que no cumples
 
-- [ ] **[IMPORTANTE] El menú no tiene opciones para la operativa básica de los dispositivos.** La clase `Actuador` (`domain/entities/actuador.py`) incluye `activar()` y `desactivar()`, pero ninguna opción del menú permite ejecutarlos. El usuario no puede interactuar con los actuadores más allá de crearlos: no puede encenderlos, apagarlos ni consultar su estado. De igual forma, `Sensor` existe como clase pero no hay ninguna opción para leer un sensor. 
+- [x] **[IMPORTANTE] El menú no tiene opciones para la operativa básica de los dispositivos.** La clase `Actuador` (`domain/entities/actuador.py`) incluye `activar()` y `desactivar()`, pero ninguna opción del menú permite ejecutarlos. El usuario no puede interactuar con los actuadores más allá de crearlos: no puede encenderlos, apagarlos ni consultar su estado. De igual forma, `Sensor` existe como clase pero no hay ninguna opción para leer un sensor. 
 - *Cómo resolverlo:* Añade al menú al menos una opción para activar/desactivar un actuador y otra para consultar el estado de los dispositivos de una habitación.
 
 - [ ] **[SUGERENCIA] `obtener_edificio()` puede devolver `None`** si se llama antes de que `guardar_edificio()` haya sido invocado. Todos los use cases asumen que el resultado nunca es `None` y llaman directamente `edificio.validar_nombre_unico(...)` sin comprobarlo, lo que causaría un `AttributeError`. 
@@ -106,7 +106,7 @@
 
 ###  Comentarios / recomendaciones
 
-- [ ] **Tener datos precargados** desde `infrastructure` que se usen cada vez que se ejecute el programa que permitan hacer pruebas sin tener que cargar datos cada vez que se ejecuta el menú. Mira en expendedora.
+- [x] **Tener datos precargados** desde `infrastructure` que se usen cada vez que se ejecute el programa que permitan hacer pruebas sin tener que cargar datos cada vez que se ejecuta el menú. Mira en expendedora.
   **Comentario**: no se ha implementado y facilita las pruebas.
 - **Añade un servicio de aplicación que haga de fachada de la misma**: en vez de pasar 3 use _cases sueltos al menú, crea un `ServicioSmartHome` en `application` que agrupe operaciones y sea el único objeto que usa la UI. Esto simplifica el menú y reduce acoplamiento (cantidad de dependencias del menú).
 - El diseño que empleas ahora con un `main.py` de entrada que se encarga de llamar al `cli/menu.py` aunque es correcto la idea era usarlo más adelante al ver como empaquetar correctamente las aplicaciones. Si quieres puedes manternerlo, pero no está alineado con lo que hemos visto hasta ahora.

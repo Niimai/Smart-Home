@@ -10,3 +10,7 @@ class Actuador(Dispositivo):
 
     def desactivar(self):
         self.estado = False
+
+    def __str__(self):
+        estado = "ENCENDIDO" if self.estado else "APAGADO"
+        return f"Actuador: {self.nombre} ({estado})"
