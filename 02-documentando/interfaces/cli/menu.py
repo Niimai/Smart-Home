@@ -52,12 +52,15 @@ class MenuCLI:
                     print("Error:", e)
 
             elif opcion == "4":
-                habitaciones = self.listar_habitaciones_uc.ejecutar()
-                if not habitaciones:
-                    print("No hay habitaciones.")
-                else:
-                    for h in habitaciones:
-                        print(f"- {h.nombre}")
+                try:
+                    habitaciones = self.listar_habitaciones_uc.ejecutar()
+                    if not habitaciones:
+                        print("No hay habitaciones.")
+                    else:
+                        for h in habitaciones:
+                            print(f"- {h.nombre}")
+                except Exception as e:
+                    print("Error:", e)
 
             elif opcion == "5":
                 hab = input("Habitación: ")

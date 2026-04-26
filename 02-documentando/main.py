@@ -16,6 +16,7 @@ def main():
     edificio = Edificio("Mi Casa Inteligente")
     repo.guardar_edificio(edificio)
 
+    # Casos de uso
     agregar_habitacion_uc = AgregarHabitacionUseCase(repo)
     agregar_sensor_uc = AgregarSensorUseCase(repo)
     agregar_actuador_uc = AgregarActuadorUseCase(repo)
