@@ -172,7 +172,7 @@ if __name__ == "__main__":
 
 ---
 
-## Puntos de atencion
+## Advertencias
 
 ### Particularidades del proyecto de paco
 
