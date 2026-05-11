@@ -76,7 +76,7 @@
 - [x] **[IMPORTANTE] El menú no tiene opciones para la operativa básica de los dispositivos.** La clase `Actuador` (`domain/entities/actuador.py`) incluye `activar()` y `desactivar()`, pero ninguna opción del menú permite ejecutarlos. El usuario no puede interactuar con los actuadores más allá de crearlos: no puede encenderlos, apagarlos ni consultar su estado. De igual forma, `Sensor` existe como clase pero no hay ninguna opción para leer un sensor. 
 - *Cómo resolverlo:* Añade al menú al menos una opción para activar/desactivar un actuador y otra para consultar el estado de los dispositivos de una habitación.
 
-- [ ] **[SUGERENCIA] `obtener_edificio()` puede devolver `None`** si se llama antes de que `guardar_edificio()` haya sido invocado. Todos los use cases asumen que el resultado nunca es `None` y llaman directamente `edificio.validar_nombre_unico(...)` sin comprobarlo, lo que causaría un `AttributeError`. 
+- [x] **[SUGERENCIA] `obtener_edificio()` puede devolver `None`** si se llama antes de que `guardar_edificio()` haya sido invocado. Todos los use cases asumen que el resultado nunca es `None` y llaman directamente `edificio.validar_nombre_unico(...)` sin comprobarlo, lo que causaría un `AttributeError`. 
   - *Cómo resolverlo*: lanza un error claro si el edificio no ha sido inicializado o de momento no implementes esta clase.
 
 - [ ] **[IMPORTANTE] Los atributos `nombre` de las entidades son públicos** (`self.nombre = nombre`) sin usar `@property`. Esto permite hacer `habitacion.nombre = ""` desde fuera sin que se valide nada. Aplica el patrón getter/setter con `@property` para `nombre` en al menos `Edificio` y `Habitacion`, de forma que la validación del `__init__` también proteja modificaciones posteriores.
