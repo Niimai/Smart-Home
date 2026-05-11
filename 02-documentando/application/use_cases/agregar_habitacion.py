@@ -1,16 +1,20 @@
 from domain.entities.habitacion import Habitacion
 
+
 class AgregarHabitacionUseCase:
+
     def __init__(self, repo):
         self.repo = repo
 
     def ejecutar(self, nombre_habitacion):
-        edificio = self.repo.obtener_edificio()
+
         habitaciones = self.repo.listar_habitaciones()
 
-        # ✔ El dominio decide todo
-        edificio.validar_habitacion_no_duplicada(nombre_habitacion, habitaciones)
+        if any(h.nombre == nombre_habitacion for h in habitaciones):
+            raise ValueError("La habitación ya existe.")
 
-        hab = Habitacion(nombre_habitacion)
-        self.repo.agregar_habitacion(hab)
-        return hab
+        habitacion = Habitacion(nombre_habitacion)
+
+        self.repo.agregar_habitacion(habitacion)
+
+        return habitacion

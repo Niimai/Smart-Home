@@ -81,11 +81,11 @@
 
 - [x] **[IMPORTANTE] Los atributos `nombre` de las entidades son públicos** (`self.nombre = nombre`) sin usar `@property`. Esto permite hacer `habitacion.nombre = ""` desde fuera sin que se valide nada. Aplica el patrón getter/setter con `@property` para `nombre` en al menos `Edificio` y `Habitacion`, de forma que la validación del `__init__` también proteja modificaciones posteriores.
 
-- [ ] **[SUGERENCIA] El menú (`interfaces/cli/menu.py:2-14`) recibe 5 casos de uso como parámetros separados.** Considera crear un `ServicioSmartHome` en `application/` que agrupe todos los casos de uso y sea el único objeto que el menú necesite. Así el menú tendría una sola dependencia y añadir nuevas funcionalidades no requeriría cambiar la firma del constructor.
+- [x] **[SUGERENCIA] El menú (`interfaces/cli/menu.py:2-14`) recibe 5 casos de uso como parámetros separados.** Considera crear un `ServicioSmartHome` en `application/` que agrupe todos los casos de uso y sea el único objeto que el menú necesite. Así el menú tendría una sola dependencia y añadir nuevas funcionalidades no requeriría cambiar la firma del constructor.
 
-- [ ] **[SUGERENCIA] La clase `Sensor` (`domain/entities/sensor.py`) no está implementada**
+- [x] **[SUGERENCIA] La clase `Sensor` (`domain/entities/sensor.py`) no está implementada**
 
-- [ ] **[SUGERENCIA] eliminar o implementar correctamente la clase Edificio**: En el estado actual de la apliación usar la clase edificio no tiene sentido. Solo hay habitaciones con sensores y actuadores. La clase Edificio solo tiene sentido si la aplicación permite tener más de un edificio y gestionarlos y en ese caso cada uno debería contener una lista de aplicaciones con lo que el repo sería de edificios que a su vez contendría una lista de habitaciones como uno de sus atributos. Tener ahora mismo la clase edificio solo para buscar habitaciones que ni siquiera están guardadas en él no tiene sentido.
+- [x] **[SUGERENCIA] eliminar o implementar correctamente la clase Edificio**: En el estado actual de la apliación usar la clase edificio no tiene sentido. Solo hay habitaciones con sensores y actuadores. La clase Edificio solo tiene sentido si la aplicación permite tener más de un edificio y gestionarlos y en ese caso cada uno debería contener una lista de aplicaciones con lo que el repo sería de edificios que a su vez contendría una lista de habitaciones como uno de sus atributos. Tener ahora mismo la clase edificio solo para buscar habitaciones que ni siquiera están guardadas en él no tiene sentido.
 
 
 ## REVISIÓN FASE 02 - 2026-02-25

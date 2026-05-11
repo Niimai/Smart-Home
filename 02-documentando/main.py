@@ -1,5 +1,3 @@
-from domain.entities.edificio import Edificio
-
 from infrastructure.repositories.edificio_repository_memory import (
     EdificioRepositoryMemory
 )
@@ -13,14 +11,8 @@ def main():
 
     repo = EdificioRepositoryMemory()
 
-    edificio = Edificio("Mi Casa Inteligente")
-
-    repo.guardar_edificio(edificio)
-
-    # Servicio de aplicación
     servicio = ServicioSmartHome(repo)
 
-    # Menú
     menu = MenuCLI(servicio)
 
     menu.mostrar()
