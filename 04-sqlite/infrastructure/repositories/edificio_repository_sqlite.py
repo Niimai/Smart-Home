@@ -255,3 +255,74 @@ class EdificioRepositorySQLite(EdificioRepository):
 
         finally:
             conn.close()
+
+
+    # Eliminar habitación
+    def eliminar_habitacion(self, habitacion):
+
+        conn = self._conectar()
+
+        try:
+
+            with conn:
+
+                cursor = conn.cursor()
+
+                cursor.execute(
+
+                    """
+                    DELETE FROM habitaciones
+                    WHERE nombre = ?
+                    """,
+
+                    (habitacion.nombre,)
+                )
+
+        except sqlite3.OperationalError as e:
+
+            raise ErrorPersistencia(
+                f"Error al eliminar habitación: {e}"
+            ) from e
+
+        finally:
+            conn.close()
+            
+
+    # Eliminar dispositivo
+    def eliminar_dispositivo(
+        self,
+        habitacion,
+        dispositivo
+    ):
+
+        conn = self._conectar()
+
+        try:
+
+            with conn:
+
+                cursor = conn.cursor()
+
+                cursor.execute(
+
+                    """
+                    DELETE FROM dispositivos
+
+                    WHERE habitacion_nombre = ?
+                    AND nombre = ?
+                    """,
+
+                    (
+                        habitacion.nombre,
+                        dispositivo.nombre
+                    )
+                )
+
+        except sqlite3.OperationalError as e:
+
+            raise ErrorPersistencia(
+                f"Error al eliminar dispositivo: {e}"
+            ) from e
+
+        finally:
+            conn.close()

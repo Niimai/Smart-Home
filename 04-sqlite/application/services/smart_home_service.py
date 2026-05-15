@@ -9,6 +9,9 @@ from application.use_cases.activar_actuador import ActivarActuadorUseCase
 from application.use_cases.desactivar_actuador import DesactivarActuadorUseCase
 from application.use_cases.consultar_estado import ConsultarEstadoUseCase
 
+from application.use_cases.eliminar_habitacion import (EliminarHabitacionUseCase)
+from application.use_cases.eliminar_dispositivo import (EliminarDispositivoUseCase)
+
 
 class ServicioSmartHome:
 
@@ -25,6 +28,9 @@ class ServicioSmartHome:
         self.desactivar_actuador_uc = DesactivarActuadorUseCase(repo)
 
         self.consultar_estado_uc = ConsultarEstadoUseCase(repo)
+
+        self.eliminar_habitacion_uc = (EliminarHabitacionUseCase(repo))
+        self.eliminar_dispositivo_uc = (EliminarDispositivoUseCase(repo))
 
 
     # Habitaciones
@@ -57,3 +63,13 @@ class ServicioSmartHome:
 
     def consultar_estado(self, habitacion):
         return self.consultar_estado_uc.ejecutar(habitacion)
+
+    
+    # Eliminar
+    def eliminar_habitacion(self, nombre_habitacion):
+
+        return self.eliminar_habitacion_uc.ejecutar(nombre_habitacion)
+
+    def eliminar_dispositivo(self, nombre_habitacion, nombre_dispositivo):
+
+        return self.eliminar_dispositivo_uc.ejecutar(nombre_habitacion, nombre_dispositivo)

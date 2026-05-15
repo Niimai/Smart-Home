@@ -33,6 +33,7 @@ CREATE TABLE IF NOT EXISTS dispositivos (
 
     FOREIGN KEY (habitacion_nombre)
         REFERENCES habitaciones(nombre)
+        ON DELETE CASCADE
 );
 
 """)

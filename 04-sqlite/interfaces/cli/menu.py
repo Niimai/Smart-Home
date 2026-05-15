@@ -16,6 +16,8 @@ class MenuCLI:
             print("6. Activar actuador")
             print("7. Desactivar actuador")
             print("8. Consultar estado dispositivos")
+            print("9. Eliminar habitación")
+            print("10. Eliminar dispositivo")
             print("0. Salir")
 
             opcion = input("Opción: ")
@@ -79,6 +81,29 @@ class MenuCLI:
 
                     for d in dispositivos:
                         print(d)
+
+                elif opcion == "9":
+
+                    hab = input("Habitación a eliminar: ")
+
+                    self.servicio.eliminar_habitacion(hab)
+
+                    print("Habitación eliminada.")
+
+                elif opcion == "10":
+
+                    hab = input("Habitación: ")
+
+                    disp = input(
+                        "Dispositivo a eliminar: "
+                    )
+
+                    self.servicio.eliminar_dispositivo(
+                        hab,
+                        disp
+                    )
+
+                    print("Dispositivo eliminado.")
 
                 elif opcion == "0":
 
