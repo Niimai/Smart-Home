@@ -8,9 +8,7 @@ class ConsultarEstadoUseCase:
         habitaciones = self.repo.listar_habitaciones()
 
         habitacion = next(
-            (h for h in habitaciones if h.nombre == nombre_habitacion),
-            None
-        )
+            (h for h in habitaciones if h.nombre == nombre_habitacion), None)
 
         if not habitacion:
             raise ValueError("La habitación no existe.")

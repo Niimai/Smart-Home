@@ -26,11 +26,9 @@ class ActivarActuadorUseCase:
 
                 d.activar()
 
-                # ✅ GUARDAR EN SQLITE
+                #Guardar en SQLITE
                 self.repo.actualizar_estado_actuador(
-                    habitacion,
-                    d
-                )
+                    habitacion, d)
 
                 return d
 

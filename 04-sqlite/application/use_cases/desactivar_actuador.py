@@ -11,9 +11,7 @@ class DesactivarActuadorUseCase:
         habitaciones = self.repo.listar_habitaciones()
 
         habitacion = next(
-            (h for h in habitaciones if h.nombre == nombre_habitacion),
-            None
-        )
+            (h for h in habitaciones if h.nombre == nombre_habitacion), None)
 
         if not habitacion:
             raise ValueError("La habitación no existe.")
@@ -26,11 +24,9 @@ class DesactivarActuadorUseCase:
 
                 d.desactivar()
 
-                # ✅ GUARDAR EN SQLITE
+                #Guardar en SQLITE
                 self.repo.actualizar_estado_actuador(
-                    habitacion,
-                    d
-                )
+                    habitacion, d)
 
                 return d
 
