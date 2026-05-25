@@ -1,22 +1,29 @@
-# Smart-Home
-Design and development of a software application that simulates the basic operation of a smart home, focused on the management of sensors that monitor the environment and actuators that respond automatically to certain events.
+# Smart Home
 
-Program execution:
+Proyecto académico desarrollado en Python siguiendo principios de Clean Architecture y SQLite.
 
-1. From a terminal (Windows, Linux or macOS)
+## Características
 
-Go to the root folder of the project, where main.py is, and execute:
+- Gestión de habitaciones
+- Gestión de sensores
+- Gestión de actuadores
+- Arquitectura por capas
+- Persistencia en base de datos
+- Menú CLI
+- Tests unitarios
+- Cobertura con coverage
 
-    python3 main.py
+## Estructura
 
-2. From VS Code
+- domain/
+- application/
+- docs/
+- infrastructure/
+- interfaces/
+- tests/
 
-Open the project folder.
-In File Explorer, click main.py.
-At the top right, press Run ▶️ or press F5.
+## Ejecución
 
-3. From PyCharm
-
-Open the project.
-In the list of files, select main.py.
-Right click → Run main.
+```bash
+python main.py
+```
