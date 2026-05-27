@@ -22,3 +22,8 @@
 - Integración SQLite
 - Persistencia
 - CRUD completo
+
+## v3.0.0
+- Integración Flask
+- API REST
+- Rutas para dispositivos

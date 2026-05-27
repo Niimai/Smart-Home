@@ -4,11 +4,22 @@
 
 - Python 3.10 o superior
 
-## Ejecutar aplicación
+## Instalar dependencias
+
+```bash
+pip install -r requirements.txt
+```
+
+## Crear base de datos
 
 ```bash
 python crear_bd.py
-python main.py
+```
+
+## Ejecutar Flask
+
+```bash
+python -m interfaces.web.app
 ```
 
 ## Ejecutar tests

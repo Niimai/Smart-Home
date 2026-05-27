@@ -1,6 +1,6 @@
 # Smart Home
 
-Proyecto académico desarrollado en Python siguiendo principios de Clean Architecture y SQLite.
+Proyecto académico desarrollado en Python siguiendo principios de Clean Architecture, SQLite y Flask.
 
 ## Características
 
