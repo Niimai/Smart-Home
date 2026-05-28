@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+
+<h2>
+
+    Dispositivos de {{ habitacion }}
+
+</h2>
+
+<ul>
+
+{% for dispositivo in dispositivos %}
+
+    <li>
+
+        <strong>
+
+            {{ dispositivo.nombre }}
+
+        </strong>
+
+        -
+
+        {{ dispositivo.__class__.__name__ }}
+
+        {% if dispositivo.__class__.__name__ == "Actuador" %}
+
+            {% if dispositivo.estado %}
+
+                (ENCENDIDO)
+
+            {% else %}
+
+                (APAGADO)
+
+            {% endif %}
+
+        {% endif %}
+
+        |
+
+        <a href="{{ url_for(
+            'eliminar_dispositivo',
+            habitacion=habitacion,
+            nombre=dispositivo.nombre
+        ) }}">
+
+            Eliminar
+
+        </a>
+
+        {% if dispositivo.__class__.__name__ == "Actuador" %}
+
+            {% if not dispositivo.estado %}
+
+                <form
+
+                    method="post"
+
+                    action="{{ url_for(
+                        'activar_actuador',
+                        habitacion=habitacion,
+                        nombre=dispositivo.nombre
+                    ) }}"
+
+                    style="display:inline;"
+                >
+
+                    <button type="submit">
+
+                        Activar
+
+                    </button>
+
+                </form>
+
+            {% else %}
+
+                <form
+
+                    method="post"
+
+                    action="{{ url_for(
+                        'desactivar_actuador',
+                        habitacion=habitacion,
+                        nombre=dispositivo.nombre
+                    ) }}"
+
+                    style="display:inline;"
+                >
+
+                    <button type="submit">
+
+                        Desactivar
+
+                    </button>
+
+                </form>
+
+            {% endif %}
+
+        {% endif %}
+
+    </li>
+
+{% endfor %}
+
+</ul>
+
+<p>
+
+    <a href="{{ url_for(
+        'listar_habitaciones'
+    ) }}">
+
+        Volver a habitaciones
+
+    </a>
+
+</p>
+
+{% endblock %}

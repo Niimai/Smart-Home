@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>
+        Smart Home
+    </title>
+
+</head>
+
+<body>
+
+    <header>
+
+        <h1>
+            Smart Home
+        </h1>
+
+        <nav>
+
+            <a href="{{ url_for('home') }}">
+                Inicio
+            </a>
+
+            |
+
+            <a href="{{ url_for('listar_habitaciones') }}">
+                Habitaciones
+            </a>
+
+            |
+
+            <a href="{{ url_for('crear_habitacion') }}">
+                Crear habitación
+            </a>
+
+            |
+
+            <a href="{{ url_for('crear_sensor') }}">
+                Crear sensor
+            </a>
+
+            |
+
+            <a href="{{ url_for('crear_actuador') }}">
+                Crear actuador
+            </a>
+
+            |
+
+            <a href="{{ url_for('ayuda') }}">
+                Ayuda
+            </a>
+
+        </nav>
+
+        <hr>
+
+    </header>
+
+    <main>
+
+        {% with mensajes = get_flashed_messages(
+            with_categories=true
+        ) %}
+
+            {% if mensajes %}
+
+                {% for categoria, mensaje in mensajes %}
+
+                    <div>
+
+                        <strong>
+
+                            {{ categoria|upper }}
+
+                        </strong>
+
+                        :
+
+                        {{ mensaje }}
+
+                    </div>
+
+                    <br>
+
+                {% endfor %}
+
+                <hr>
+
+            {% endif %}
+
+        {% endwith %}
+
+        {% block contenido %}
+        {% endblock %}
+
+    </main>
+
+</body>
+
+</html>

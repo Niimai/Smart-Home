@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+
+<h2>
+    Bienvenido a Smart Home
+</h2>
+
+<p>
+    Aplicación Flask con Clean Architecture.
+</p>
+
+<ul>
+
+    <li>
+
+        <a href="{{ url_for('listar_habitaciones') }}">
+
+            Ver habitaciones
+
+        </a>
+
+    </li>
+
+    <li>
+
+        <a href="{{ url_for('crear_habitacion') }}">
+
+            Crear habitación
+
+        </a>
+
+    </li>
+
+    <li>
+
+        <a href="{{ url_for('crear_sensor') }}">
+
+            Crear sensor
+
+        </a>
+
+    </li>
+
+    <li>
+
+        <a href="{{ url_for('crear_actuador') }}">
+
+            Crear actuador
+
+        </a>
+
+    </li>
+
+</ul>
+
+{% endblock %}
