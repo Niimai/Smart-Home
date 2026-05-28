@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+
+<h2>
+    Rutas registradas
+</h2>
+
+<table border="1">
+
+    <tr>
+
+        <th>
+            Ruta
+        </th>
+
+        <th>
+            Métodos
+        </th>
+
+    </tr>
+
+    {% for ruta in rutas %}
+
+    <tr>
+
+        <td>
+            {{ ruta.ruta }}
+        </td>
+
+        <td>
+            {{ ruta.metodos }}
+        </td>
+
+    </tr>
+
+    {% endfor %}
+
+</table>
+
+{% endblock %}

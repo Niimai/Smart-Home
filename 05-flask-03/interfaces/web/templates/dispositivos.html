@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+
+<h2>
+    Dispositivos de {{ habitacion }}
+</h2>
+
+<ul>
+
+{% for dispositivo in dispositivos %}
+
+    <li>
+
+        {{ dispositivo.nombre }}
+
+        -
+
+        {{ dispositivo.__class__.__name__ }}
+
+        {% if dispositivo.__class__.__name__ == "Actuador" %}
+
+            {% if dispositivo.estado %}
+
+                (ENCENDIDO)
+
+            {% else %}
+
+                (APAGADO)
+
+            {% endif %}
+
+        {% endif %}
+
+    </li>
+
+{% endfor %}
+
+</ul>
+
+{% endblock %}

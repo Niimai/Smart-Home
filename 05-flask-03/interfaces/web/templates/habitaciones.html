@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+
+<h2>
+    Habitaciones
+</h2>
+
+<ul>
+
+{% for habitacion in habitaciones %}
+
+    <li>
+
+        {{ habitacion.nombre }}
+
+        -
+
+        <a href="{{ url_for(
+            'listar_dispositivos',
+            habitacion=habitacion.nombre
+        ) }}">
+
+            Ver dispositivos
+
+        </a>
+
+    </li>
+
+{% endfor %}
+
+</ul>
+
+{% endblock %}
