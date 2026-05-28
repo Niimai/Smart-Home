@@ -27,3 +27,15 @@ Proyecto académico desarrollado en Python siguiendo principios de Clean Archite
 ```bash
 python main.py
 ```
+
+## Logging
+
+Las peticiones se registran en:
+
+smarthome.log
+
+## Ruta ayuda
+
+La aplicación incluye:
+
+/ayuda

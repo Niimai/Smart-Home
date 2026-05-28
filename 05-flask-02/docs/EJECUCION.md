@@ -27,3 +27,11 @@ python -m interfaces.web.app
 ```bash
 python -m unittest
 ```
+
+## Ruta ayuda
+
+/ayuda
+
+## Logging
+
+smarthome.log
