@@ -51,3 +51,13 @@
 - Añadida plantilla común error.html para errores 404 y 500
 - Integrado uso de url_for() en plantillas
 - Añadida carpeta templates para vistas Flask
+
+## v4.3.0
+
+- Añadidos formularios HTML para operaciones de escritura
+- Implementado patrón Post/Redirect/Get
+- Añadidas confirmaciones de eliminación
+- Eliminadas escrituras por GET
+- Añadidos formularios POST para activar/desactivar actuadores
+- Mejorada la navegación mediante enlaces y botones
+- Añadido re-render de formularios con errores

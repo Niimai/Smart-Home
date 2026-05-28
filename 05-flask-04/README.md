@@ -11,6 +11,7 @@ Proyecto académico desarrollado en Python siguiendo principios de Clean Archite
 - Persistencia SQLite
 - API Flask
 - Plantillas Jinja2
+- Formularios HTML
 - Logging HTTP
 - Manejo global de errores
 - Tests unitarios
@@ -73,11 +74,28 @@ base.html
 
 Todas las páginas comparten navegación común.
 
+
+## Escrituras HTTP
+
+Las operaciones que modifican estado:
+
+- utilizan POST
+- NO utilizan GET
+- aplican PRG (Post/Redirect/Get)
+- usan confirmación para eliminaciones
+
+
+## Navegación
+
+La aplicación incluye enlaces y botones HTML para navegar sin escribir URLs manualmente.
+
+
 ## Logging
 
 Las peticiones se registran en:
 
 smarthome.log
+
 
 ## Ruta ayuda
 

@@ -34,23 +34,45 @@ python -m unittest
 http://127.0.0.1:5000
 ```
 
-## Carpeta de plantillas
+# Rutas GET
 
-Las plantillas HTML Flask se encuentran en:
+| Ruta | Método | Descripción |
+|---|---|---|
+| / | GET | Inicio |
+| /habitaciones | GET | Listar habitaciones |
+| /dispositivos/<habitacion> | GET | Listar dispositivos |
+| /ayuda | GET | Mostrar rutas |
+| /habitaciones/crear | GET | Formulario crear habitación |
+| /sensor/crear | GET | Formulario crear sensor |
+| /actuador/crear | GET | Formulario crear actuador |
+| /habitaciones/eliminar/<nombre> | GET | Confirmar eliminación habitación |
+| /dispositivo/eliminar/<habitacion>/<nombre> | GET | Confirmar eliminación dispositivo |
+
+# Rutas POST
+
+| Ruta | Método | Descripción |
+|---|---|---|
+| /habitaciones/crear | POST | Crear habitación |
+| /sensor/crear | POST | Crear sensor |
+| /actuador/crear | POST | Crear actuador |
+| /habitaciones/eliminar/<nombre> | POST | Eliminar habitación |
+| /dispositivo/eliminar/<habitacion>/<nombre> | POST | Eliminar dispositivo |
+| /actuador/activar/<habitacion>/<nombre> | POST | Activar actuador |
+| /actuador/desactivar/<habitacion>/<nombre> | POST | Desactivar actuador |
+
+## Plantillas
+
+Las plantillas HTML están en:
 
 ```text
 interfaces/web/templates/
 ```
 
-## Plantilla base
-
-La aplicación utiliza:
+y extienden de:
 
 ```text
 base.html
 ```
-
-como plantilla principal compartida.
 
 ## Ruta ayuda
 
