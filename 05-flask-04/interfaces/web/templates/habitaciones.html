@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+
+<h2>
+    Habitaciones
+</h2>
+
+<ul>
+
+{% for habitacion in habitaciones %}
+
+    <li>
+
+        <strong>
+
+            {{ habitacion.nombre }}
+
+        </strong>
+
+        -
+
+        <a href="{{ url_for(
+            'listar_dispositivos',
+            habitacion=habitacion.nombre
+        ) }}">
+
+            Ver dispositivos
+
+        </a>
+
+        |
+
+        <a href="{{ url_for(
+            'eliminar_habitacion',
+            nombre=habitacion.nombre
+        ) }}">
+
+            Eliminar
+
+        </a>
+
+    </li>
+
+{% endfor %}
+
+</ul>
+
+{% endblock %}

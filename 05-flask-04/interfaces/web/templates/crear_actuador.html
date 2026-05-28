@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+
+<h2>
+    Crear actuador
+</h2>
+
+{% if error %}
+
+<p style="color:red;">
+
+    {{ error }}
+
+</p>
+
+{% endif %}
+
+<form
+
+    method="post"
+
+    action="{{ url_for('crear_actuador') }}"
+>
+
+    <label>
+        Nombre:
+    </label>
+
+    <input
+
+        type="text"
+
+        name="nombre"
+
+        value="{{ nombre }}"
+    >
+
+    <br><br>
+
+    <label>
+        Habitación:
+    </label>
+
+    <select name="habitacion">
+
+        {% for habitacion in habitaciones %}
+
+        <option
+
+            value="{{ habitacion.nombre }}"
+
+            {% if habitacion_actual == habitacion.nombre %}
+                selected
+            {% endif %}
+        >
+
+            {{ habitacion.nombre }}
+
+        </option>
+
+        {% endfor %}
+
+    </select>
+
+    <br><br>
+
+    <button type="submit">
+
+        Crear actuador
+
+    </button>
+
+</form>
+
+{% endblock %}

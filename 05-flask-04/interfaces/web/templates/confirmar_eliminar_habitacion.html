@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+
+<h2>
+    Confirmar eliminación
+</h2>
+
+<p>
+
+    ¿Seguro que quieres eliminar
+    "{{ nombre }}"?
+
+</p>
+
+<form method="post">
+
+    <button type="submit">
+
+        Confirmar eliminación
+
+    </button>
+
+</form>
+
+{% endblock %}
