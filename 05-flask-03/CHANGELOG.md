@@ -10,7 +10,7 @@
 - Menú por consola
 
 
-## v1.1.0
+## v2.0.0
 
 - Añadidos tests unitarios
 - Añadida documentación
@@ -18,20 +18,20 @@
 - Refactorización Clean Architecture
 
 
-## v2.0.0
+## v3.0.0
 
 - Integración SQLite
 - Persistencia
 - CRUD completo
 
-## v3.0.0
+## v4.0.0
 
 - Integración Flask
 - API REST
 - Rutas para dispositivos
 
 
-## v3.1.0
+## v4.1.0
 
 - Añadidos handlers 404 y 500
 - Añadida ruta /ayuda
@@ -39,3 +39,15 @@
 - Añadido before_request
 - Añadido smarthome.log
 - Añadido .gitignore para logs
+
+
+## v4.2.0
+
+- Integradas plantillas Jinja2
+- Añadida herencia de plantillas con base.html
+- Añadida navegación común en todas las páginas
+- Sustituido HTML inline por render_template()
+- Añadidas plantillas para habitaciones, ayuda y errores
+- Añadida plantilla común error.html para errores 404 y 500
+- Integrado uso de url_for() en plantillas
+- Añadida carpeta templates para vistas Flask

@@ -8,10 +8,22 @@ Proyecto académico desarrollado en Python siguiendo principios de Clean Archite
 - Gestión de sensores
 - Gestión de actuadores
 - Arquitectura por capas
-- Persistencia en base de datos
-- Menú CLI
+- Persistencia SQLite
+- API Flask
+- Plantillas Jinja2
+- Logging HTTP
+- Manejo global de errores
 - Tests unitarios
-- Cobertura con coverage
+- Coverage
+
+## Tecnologías
+
+- Python
+- Flask
+- SQLite
+- Jinja2
+- unittest
+- coverage
 
 ## Estructura
 
@@ -22,11 +34,44 @@ Proyecto académico desarrollado en Python siguiendo principios de Clean Archite
 - interfaces/
 - tests/
 
+## Estructura Web
+
+```text
+interfaces/
+└── web/
+    ├── app.py
+    └── templates/
+        ├── base.html
+        ├── index.html
+        ├── habitaciones.html
+        ├── dispositivos.html
+        ├── ayuda.html
+        └── error.html
+```
+
 ## Ejecución
 
+### Crear base de datos
+
 ```bash
-python main.py
+python crear_bd.py
 ```
+
+### Ejecutar Flask
+
+```bash
+python -m interfaces.web.app
+```
+
+## Plantillas
+
+La aplicación usa plantillas Jinja2 con herencia desde:
+
+```text
+base.html
+```
+
+Todas las páginas comparten navegación común.
 
 ## Logging
 
