@@ -34,6 +34,43 @@ python -m unittest
 http://127.0.0.1:5000
 ```
 
+# API REST
+
+| Ruta | Método | Descripción |
+|---|---|---|
+| /api/habitaciones | GET | Lista habitaciones |
+| /api/habitaciones/<nombre> | GET | Detalle habitación |
+
+## Ejemplo colección
+
+```text
+GET /api/habitaciones
+```
+
+## Ejemplo detalle
+
+```text
+GET /api/habitaciones/Dormitorio
+```
+
+## Error API
+
+```json
+{
+  "error": "Habitación 'NO_EXISTE' no encontrada"
+}
+```
+
+## Flash messages
+
+La aplicación usa:
+
+```python
+flash(...)
+```
+
+para mostrar mensajes tras redirects POST.
+
 # Rutas GET
 
 | Ruta | Método | Descripción |

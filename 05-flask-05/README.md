@@ -50,6 +50,51 @@ interfaces/
         └── error.html
 ```
 
+## API REST
+
+La aplicación incluye una API REST mínima reutilizando la misma capa application utilizada por la interfaz web.
+
+### Endpoints disponibles
+
+#### Colección
+
+```text
+GET /api/habitaciones
+```
+
+Devuelve todas las habitaciones.
+
+#### Detalle
+
+```text
+GET /api/habitaciones/<nombre>
+```
+
+Devuelve una habitación y sus dispositivos.
+
+## Ejemplo JSON
+
+```json
+{
+  "nombre": "Dormitorio",
+  "dispositivos": [
+    {
+      "nombre": "ActuadorDormitorio",
+      "tipo": "Actuador",
+      "estado": false
+    }
+  ]
+}
+```
+
+## Error 404 API
+
+```json
+{
+  "error": "Habitación no encontrada"
+}
+```
+
 ## Ejecución
 
 ### Crear base de datos

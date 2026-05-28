@@ -61,3 +61,12 @@
 - Añadidos formularios POST para activar/desactivar actuadores
 - Mejorada la navegación mediante enlaces y botones
 - Añadido re-render de formularios con errores
+
+## v4.4.0
+
+- Añadidos mensajes flash tras operaciones POST
+- Integrada API REST mínima con Flask y jsonify
+- Añadidos endpoints JSON para habitaciones
+- Añadido endpoint detalle con manejo de errores 404 JSON
+- Reutilización de la capa application desde la API REST
+- Añadido feedback visual mediante flash messages
